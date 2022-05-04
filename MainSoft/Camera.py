@@ -7,6 +7,10 @@ import os
 import matplotlib.pyplot as plt
 from math import atan2, sqrt, degrees, radians
 
+# Полигон имеет 4 камеры и изначально планировалось использовать их все. На данном этапе используется только одна - 94ая.
+
+# The landfill has four cameras and was originally planned to use them all. At this stage, only one is in use - the 94th.
+
 cameras_dict = {
     1: "http://admin:admin@192.168.0.91:8008",
     2: "http://admin:admin@192.168.0.92:8008",
@@ -14,6 +18,10 @@ cameras_dict = {
     4: "http://admin:admin@192.168.0.94:8008",
     5: 0}
 
+
+# Как следует из названия - поиск АрУко-маркеров. Возвращает координаты углов каждого маркера. Координатная плоскость - само изображение.
+
+# As the name implies, the search for ArUco markers. Returns the coordinates of the corners of each marker. The coordinate plane is the image itself. 
 
 def findarucomarker(img, markersize=4, totalmarker=250, draw=True):
     """
@@ -41,6 +49,10 @@ def findarucomarker(img, markersize=4, totalmarker=250, draw=True):
 
     return [bbox, ids]
 
+
+# Специальная функция для подсчёта остальных важных точек АрУко-маркера
+
+# Special function for calculating the remaining important points of the ArUko Marker
 
 def findArucoCoords(bbox):
     """
@@ -74,6 +86,9 @@ def findArucoCoords(bbox):
 
     return coords
 
+# Функция для вычисления ориентации объекта к цели. Возвращает угол и расстояние до цели.
+
+# Function for calculating the orientation of an object to a target. Returns the angle and distance to the target.
 
 def calc_orientation(coords, target):
     """
@@ -96,6 +111,10 @@ def calc_orientation(coords, target):
 
     return calculations
 
+# Вычисление угла от объекта до цели по трём точкам: центр АрУко-маркера, центр фронтальной части АрУко-маркера и центр цели.
+
+# Calculation of the angle from object to target using three points: the center of the ArUco marker, 
+# the center of the front of the ArUco marker, and the center of the target.
 
 def angle_between_three(p1, p2, p3):
     """
@@ -111,6 +130,9 @@ def angle_between_three(p1, p2, p3):
     deg2 = (360 + degrees(atan2(x3 - x2, y3 - y2))) % 360
     return radians(deg2 - deg1) if deg1 <= deg2 else radians(360 - (deg1 - deg2))
 
+# Функция для поиска препятствий по изображению. Препятствия представляют собой бумажный параллелепипед.
+
+# Function for finding obstacles on the image. Obstacles are paper parallelepipeds.
 
 def find_obstacle(img):
     """
@@ -142,6 +164,9 @@ def find_obstacle(img):
 
     return rects
 
+# Функция для определения положения препятствий. Препятствия статичны. 
+
+# Function for determining the position of obstacles. Obstacles are static. 
 
 def get_obstacle(capture):
     """
@@ -156,10 +181,9 @@ def get_obstacle(capture):
 
     return obstacles
 
+# Функция для получения изображения сразу со всех камер
 
-def isLinesCrossing():
-    pass
-
+# Function for acquiring images from all cameras at once
 
 def getAllCameraImages():
     cap1 = cv2.VideoCapture(cameras_dict[1])
@@ -173,11 +197,17 @@ def getAllCameraImages():
             cap4   # 3
             ]
 
+# Так как на изображении присутствуют элементы, которые находятся вне рабочего полигона, их следует обрезать.  
+
+# Since there are elements on the image that are outside the working polygon, they should be cropped. 
 
 def cropImage(frame, min_x, max_x, min_y, max_y):
     croped_image = frame[min_x:max_x, min_y:max_y]
     return croped_image
 
+# Чтобы можно было удобнее наблюдать за полученным изображением, которое выводится на экран, его необходимо уменьшить. 
+
+# To be able to observe the resulting image displayed on the screen more conveniently, it should be reduced. 
 
 def rescaleFrame(frame, scale=0.75):
     # Images, Videos and Live videos
