@@ -8,4 +8,6 @@
 3. Камера внешнего наблюдения, используемая для навигации мобильных роботов.
 4. M число ArUco-маркеров для позиционирования мобильных роботов и целевых объектов. 
 
+https://github.com/CaptWhiteBeard/JetBot_MultiAgentSystem/blob/main/ThreeRobots.mp4
+
 Here gonna be description of my project 
