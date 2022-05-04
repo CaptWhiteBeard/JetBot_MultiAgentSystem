@@ -1,5 +1,11 @@
 import socket
 
+# Вся коммуникация базируется на модели клиент-сервер, причём клиентом в данном случае выступает основной компьютер, а сервером - каждый робот. 
+# Так проще осуществлять доступ к каждому подключению.
+
+# All communication is based on the client-server model, with the client in this case being the main computer and each robot being the server. 
+# This makes it easier to access each connection.
+
 message = {}
 
 robot_ids = {
@@ -8,7 +14,11 @@ robot_ids = {
     5: '192.168.0.122'
 }
 
-SERVER_1 = "127.0.0.1"
+# Данные для подключения к каждому роботу
+
+# Connection data for each robot
+
+SERVER_1 = "127.0.0.1" 
 PORT_1 = 8081
 
 SERVER_2 = "127.0.0.1"
@@ -22,6 +32,9 @@ SERVER_LIST = [(SERVER_1, PORT_1), (SERVER_2, PORT_2), (SERVER_3, PORT_3)]
 CHECK_CONNECTION = []
 CONTROL_LIST = [False] * len(SERVER_LIST)
 
+# Функция для подключения к каждому роботу
+
+# Function for connecting to each robot
 
 def connection():
     global CLIENTS_LIST
@@ -41,6 +54,9 @@ def connection():
         for client in CLIENTS_LIST:
             client.close()
 
+# Функция для отправки сообщения каждому роботу
+
+# Function for sending a message to each robot
 
 def send_message(ids, left_wheel, right_wheel, exec_time):
     global CLIENTS_LIST, message
