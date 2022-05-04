@@ -18,8 +18,8 @@ The main task of this project was to execute a certain scenario using JetBot rob
 
 The available inventory for the project:
 
-N pieces of mobile JetBot robots.
-A polygon on which the robots move.
-An external surveillance camera used to navigate the mobile robots.
-M number of ArUco markers for positioning mobile robots and target objects.
+1. N pieces of mobile JetBot robots.
+2. A polygon on which the robots move.
+3. An external surveillance camera used to navigate the mobile robots.
+4. M number of ArUco markers for positioning mobile robots and target objects.
 
