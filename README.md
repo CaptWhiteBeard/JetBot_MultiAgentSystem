@@ -17,9 +17,11 @@ https://user-images.githubusercontent.com/72980612/166826254-a8c66f50-ab1f-4f24-
 ### Описание файлов
 
 > Camera.py
+Описание камеры
 > Movement.py
+Описание движения
 > main.py
-
+Описание основного скрипта
 
 
 ## English Description
