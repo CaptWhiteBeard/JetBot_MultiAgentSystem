@@ -14,6 +14,14 @@
 
 https://user-images.githubusercontent.com/72980612/166826254-a8c66f50-ab1f-4f24-a96c-9e5050653539.mp4
 
+### Описание файлов
+
+> Camera.py
+> Movement.py
+> main.py
+
+
+
 ## English Description
 
 The main task of this project was to execute a certain scenario using JetBot robots. The execution of the scenario should not depend on the number of robots. At least at first)
